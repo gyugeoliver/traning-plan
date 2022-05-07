@@ -1,0 +1,14 @@
+{
+    "targets": {
+        "traning-plan": {
+            "hosting": {
+                "week-04": [
+                    "traning-plan"
+                ]
+            }
+        }
+    },
+    "projects": {
+        "default": "traning-plan"
+    }
+}
