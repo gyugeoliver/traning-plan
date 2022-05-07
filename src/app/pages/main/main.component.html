@@ -1,9 +1,9 @@
 <div class="main_component">
     <form [formGroup]="userForm">
-        <div class="mt-5">
+        <div class="mt-5 box">
             <div class="form-row">
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label>Name</label>
                     </div>
                     <div class="form-row">
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label>Address</label>
                     </div>
                     <div class="form-row">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label>Contact No</label>
                     </div>
                     <div class="form-row">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group">
+                    <div class="form-group mt-4">
                         <label>Gender</label>
                     </div>
                     <div class="form-row">
@@ -42,7 +42,35 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-row mt-4">
+                    <div class="col-md-6">
+                        &nbsp; <button type="button" class="btn btn-primary" (click)="addItem()">Add</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>
+    <div class="col-md-8 mt-4 mb-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Concact No</th>
+                    <th>Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item for listData">
+                    <td><span>{{item.name}}</span></td>
+                    <td><span>{{item.address}}</span></td>
+                    <td><span>{{item.concactNo}}</span></td>
+                    <td><button type="button" class="btn btn-primary" (click)="removeItem(item)">Remove</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
