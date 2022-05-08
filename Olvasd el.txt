@@ -1,0 +1,1 @@
+A hosting linken nem akar müködni a projekt, de ha ng serve-vel van inditva és ugy akkor minden jo. az ng serve-t pedig külön cmdböl inditsd.
