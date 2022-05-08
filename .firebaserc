@@ -1,14 +1,15 @@
 {
+    "projects": {
+        "default": "traning-plan-b7146",
+        "staging": "traning-plan-b7146"
+    },
     "targets": {
-        "traning-plan": {
+        "traning-plan-b7146": {
             "hosting": {
-                "week-04": [
-                    "traning-plan"
+                "traning-plan-b7146": [
+                    "traning-plan-b7146"
                 ]
             }
         }
-    },
-    "projects": {
-        "default": "traning-plan"
     }
 }

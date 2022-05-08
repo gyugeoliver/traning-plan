@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "week-04": {
+        "traning-plan": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -20,7 +20,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/week-04",
+                        "outputPath": "dist/traning-plan",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -40,7 +40,7 @@
                         "production": {
                             "budgets": [{
                                     "type": "initial",
-                                    "maximumWarning": "500kb",
+                                    "maximumWarning": "1500kb",
                                     "maximumError": "2mb"
                                 },
                                 {
@@ -70,10 +70,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "week-04:build:production"
+                            "browserTarget": "traning-plan:build:production"
                         },
                         "development": {
-                            "browserTarget": "week-04:build:development"
+                            "browserTarget": "traning-plan:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "week-04:build"
+                        "browserTarget": "traning-plan:build"
                     }
                 },
                 "test": {
@@ -108,13 +108,13 @@
                     "options": {
                         "prerender": false,
                         "ssr": false,
-                        "browserTarget": "week-04:build:production",
-                        "firebaseProject": "traning-plan",
-                        "firebaseHostingSite": "traning-plan"
+                        "browserTarget": "traning-plan:build:production",
+                        "firebaseProject": "traning-plan-b7146",
+                        "firebaseHostingSite": "traning-plan-b7146"
                     }
                 }
             }
         }
     },
-    "defaultProject": "week-04"
+    "defaultProject": "traning-plan"
 }
