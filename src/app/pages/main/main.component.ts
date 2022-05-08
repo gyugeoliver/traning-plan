@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs';
 import { Traning } from 'src/app/shared/models/Traning';
 import { TraningService } from 'src/app/shared/services/traning.service';
 
@@ -35,43 +36,48 @@ export class MainComponent implements OnInit {
     this.traningForm = this.fb.group({
       date:['', Validators.required],
       name:['', Validators.required],
+      serial:['', Validators.required],
       repetition:['', Validators.required],
-      repetition2:['', Validators.required],
     })
   }
 
   onSubmit() {
-
+      if(this.traningForm.invalid){
+        return;
+      }
       const traning: Traning = {
         date: this.traningForm.get('date')?.value,
         name: this.traningForm.get('name')?.value,
+        serial: this.traningForm.get('serial')?.value,
         repetition: this.traningForm.get('repetition')?.value,
-        repetition2: this.traningForm.get('repetition2')?.value,
       }
 
       this.traningService.create(traning).then(_ => {
         console.log('User added successfully.');
+        this.data();
       }).catch(error => {
         console.error(error);
       })
 
-    console.log(traning);
+      this.reset();
   }
 
-
-  removeItem(element: any){
-    this.listData.forEach((value: any,index: any) => {
-      if (value == element)
-        this.listData.splice(index,1);
-    });
+  removeItem(element: Traning){
+    this.traningService.delete(element.id!);
+    this.data();
   }
-
 
   reset(){
     this.traningForm.reset();
   }
 
+  data(){
+    this.traningService.getAll().pipe(first()).subscribe(data=>{this.listData=data});
+  }
+
+
   ngOnInit(): void {
+    this.data();
   }
 
 }

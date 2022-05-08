@@ -32,4 +32,7 @@ export class UserService {
   delete(id: string) {
     return this.afs.collection<User>(this.collectionName).doc(id).delete();
   }
+
+
+  
 }

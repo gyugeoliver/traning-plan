@@ -19,7 +19,7 @@ create(traning: Traning) {
 }
 
 getAll() {
-  return this.afs.collection<Traning>(this.collectionName).valueChanges();
+  return this.afs.collection<Traning>(this.collectionName, ref => ref.orderBy('date','asc')).valueChanges();
 }
 
 getById(id: string) {
