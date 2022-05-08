@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Traning } from 'src/app/shared/models/Traning';
+import { TraningService } from 'src/app/shared/services/traning.service';
+
 
 
 @Component({
@@ -10,26 +13,51 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 
 export class MainComponent implements OnInit {
 
-  userForm: FormGroup;
+  traningForm: FormGroup;
   listData: any;
 
-  constructor(private fb:FormBuilder) {
+  /*  
+  signUpForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+    rePassword: new FormControl(''),
+    name: new FormGroup({
+      firstname: new FormControl(''),
+      lastname: new FormControl('')
+    })
+  });
+  */
+  constructor(
+      private traningService: TraningService ,
+      private fb: FormBuilder
+  ) {
 
-    this.listData = [];
-
-    this.userForm = this.fb.group({
+    this.traningForm = this.fb.group({
+      date:['', Validators.required],
       name:['', Validators.required],
-      address:['', Validators.required],
-      concactNo:['', Validators.required],
-      gender:['', Validators.required],
+      repetition:['', Validators.required],
+      repetition2:['', Validators.required],
     })
   }
 
-  public addItem() : void{
-    this.listData.push(this.userForm.value);
-    this.userForm.reset();
+  onSubmit() {
 
+      const traning: Traning = {
+        date: this.traningForm.get('date')?.value,
+        name: this.traningForm.get('name')?.value,
+        repetition: this.traningForm.get('repetition')?.value,
+        repetition2: this.traningForm.get('repetition2')?.value,
+      }
+
+      this.traningService.create(traning).then(_ => {
+        console.log('User added successfully.');
+      }).catch(error => {
+        console.error(error);
+      })
+
+    console.log(traning);
   }
+
 
   removeItem(element: any){
     this.listData.forEach((value: any,index: any) => {
@@ -38,8 +66,9 @@ export class MainComponent implements OnInit {
     });
   }
 
+
   reset(){
-    this.userForm.reset();
+    this.traningForm.reset();
   }
 
   ngOnInit(): void {
